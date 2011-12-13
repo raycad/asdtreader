@@ -61,9 +61,10 @@ public final class R {
     public static final class id {
         public static final int contentLayout=0x7f050001;
         public static final int rateButtonsLayout=0x7f050004;
-        public static final int rssCategoryListButton=0x7f050006;
+        public static final int rssCategoryListButton=0x7f050007;
         public static final int rssCategoryTextView=0x7f050003;
-        public static final int rssFeedListButton=0x7f050005;
+        public static final int rssFeedListButton=0x7f050006;
+        public static final int rssFeedListView=0x7f050005;
         public static final int rssFeedTitleTextView=0x7f050002;
         public static final int thumbnailImageView=0x7f050000;
     }

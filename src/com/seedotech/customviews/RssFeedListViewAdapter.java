@@ -32,7 +32,8 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return m_rssFeedModel.count();
+		//return m_rssFeedModel.count();
+		return 10;
 	}
 
 	@Override
