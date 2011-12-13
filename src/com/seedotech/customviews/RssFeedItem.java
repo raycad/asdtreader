@@ -94,11 +94,20 @@ public class RssFeedItem extends RelativeLayout {
 				rateButton.setRateState(RateButton.RateState.UnRate);
 			}
 		}
+		
+		// Update rate to the model
+		if (m_rssFeed != null) 
+			m_rssFeed.setRate(m_currentRateValue);
 	}
 	
 	public void updateView() {
+		// Reset the current rate value so that the function does not set wrong value
 		int currentRateValue = m_currentRateValue;
 		m_currentRateValue = -1;
-		setRateValue(currentRateValue);
+		
+		if (m_rssFeed != null) {
+			m_rssFeedTitleTextView.setText(m_rssFeed.getTitle());
+			setRateValue(m_rssFeed.getRate());
+		}
 	}
 }

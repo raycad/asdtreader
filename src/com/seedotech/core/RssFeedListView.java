@@ -22,7 +22,7 @@ public class RssFeedListView implements SdtView {
 		m_rssFeedListView = (ListView) m_rssFeedListActivity.findViewById(R.id.rssFeedListView);
     	
     	/* create an adapter */
-    	this.m_rssFeedListViewAdapter = new RssFeedListViewAdapter(m_rssFeedListActivity, null);
+    	this.m_rssFeedListViewAdapter = new RssFeedListViewAdapter(m_rssFeedListActivity, m_rssFeedListActivity.getFilterRssFeedModel());
     	
     	// set the list's adapter
     	m_rssFeedListView.setAdapter(this.m_rssFeedListViewAdapter);

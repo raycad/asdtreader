@@ -2,7 +2,7 @@ package com.seedotech.models;
 
 import java.util.ArrayList;
 
-import com.seedotech.models.RssFeed.RssFeedPK;
+import com.seedotech.models.RssFeedPK;
 
 public class RssFeedModel {
 	private ArrayList<RssFeed>	m_rssFeedList = new ArrayList<RssFeed>();

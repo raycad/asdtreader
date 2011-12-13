@@ -33,8 +33,7 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		//return m_rssFeedModel.count();
-		return 10;
+		return m_rssFeedModel.count();
 	}
 
 	@Override
@@ -62,23 +61,23 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 				holder.m_rssFeedItem 		= (RssFeedItem) convertView;
 				holder.m_rssFeedImageView 	= (ImageView) 	convertView.findViewById(R.id.rssFeedThumbnailImageView);
 				
-				if (m_rssFeedModel != null) {
-					// Get the current RSS feed
-					RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
-					if (rssFeed != null && convertView != null) {
-						holder.m_rssFeedItem.setRssFeed(rssFeed);
-					}
-				}
-				
 				convertView.setTag(holder);
 			} else
 				holder = (ViewHolder)convertView.getTag();
 
+			if (m_rssFeedModel != null) {
+				// Get the current RSS feed
+				RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
+				if (rssFeed != null && convertView != null) {
+					holder.m_rssFeedItem.setRssFeed(rssFeed);
+				}
+			}
+			
 			// Set background color
 			if (position%2 == 0)
-				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 240, 240, 240));
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 250, 255, 240));
 			else 
-				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 176, 176, 176));
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 200, 200, 200));
 			
 			int imageId;
 			if (position%3 == 0) 
