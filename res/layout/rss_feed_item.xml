@@ -1,53 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="68dp"
     android:orientation="horizontal" >
 
-    <ImageView 
-        android:id="@+id/rssFeedThumbnailImageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:src="@drawable/rss_green"/>
-    
-    <LinearLayout 
-        android:id="@+id/contentLayout"
+    <LinearLayout
+        android:id="@+id/deleteButtonLayout"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="5dp"
-        android:weightSum="100"
-        android:orientation="vertical">
-        
-        <TextView 
-            android:id="@+id/rssFeedTitleTextView"
+        android:layout_alignParentRight="true"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="34"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:gravity="left|center_vertical"
-            android:text="Rss Feed Dgh"/>
-        
-        <TextView 
-            android:id="@+id/rssCategoryTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="26"
-            android:gravity="left|center_vertical"
-            android:textSize="12dp"
-            android:textStyle="italic|bold"
-            android:textColor="#061EBF"
-            android:text="Rss Feed Category 1"/>
-        
-        <LinearLayout 
-            android:id="@+id/rateButtonsLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textColor="#FA0202"
+            android:textSize="16dp"
+            android:textStyle="italic"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp"
             android:gravity="center"
-            android:layout_weight="36"></LinearLayout>
+            android:text="Delete" />
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/deleteButtonLayout"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/deleteIndicatorImageView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/cancel" />
+        
+        <ImageView
+            android:id="@+id/rssFeedThumbnailImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/rss_green" />
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@id/rssFeedThumbnailImageView"
+            android:orientation="vertical"
+            android:weightSum="100" >
+
+            <TextView
+                android:id="@+id/rssFeedTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="34"
+                android:gravity="left|center_vertical"
+                android:text="Rss Feed Dgh"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rssCategoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="26"
+                android:gravity="left|center_vertical"
+                android:text="Rss Feed Category 1"
+                android:textColor="#061EBF"
+                android:textSize="12dp"
+                android:textStyle="italic|bold" />
+
+            <LinearLayout
+                android:id="@+id/rateButtonsLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="36"
+                android:gravity="center" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

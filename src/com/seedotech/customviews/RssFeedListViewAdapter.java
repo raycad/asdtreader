@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 	private LayoutInflater 	m_inflater;
 	private	RssFeedModel 	m_rssFeedModel;
 
+	public RssFeedListViewHolder	m_rssFeedListViewHolder = new RssFeedListViewHolder();
+	
 	public RssFeedListViewAdapter(Activity activity, final RssFeedModel rssFeedModel) {
 		super();
 
@@ -70,6 +73,8 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 				RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
 				if (rssFeed != null && convertView != null) {
 					holder.m_rssFeedItem.setRssFeed(rssFeed);
+					holder.m_rssFeedItem.setPosition(position);
+					holder.m_rssFeedItem.setRssFeedListViewAdapter(this);
 				}
 			}
 			

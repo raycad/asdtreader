@@ -62,14 +62,17 @@ public final class R {
         public static final int web_browser_icon=0x7f020030;
     }
     public static final class id {
-        public static final int contentLayout=0x7f050001;
-        public static final int rateButtonsLayout=0x7f050004;
-        public static final int rssCategoryListButton=0x7f050007;
-        public static final int rssCategoryTextView=0x7f050003;
-        public static final int rssFeedListButton=0x7f050006;
-        public static final int rssFeedListView=0x7f050005;
-        public static final int rssFeedThumbnailImageView=0x7f050000;
-        public static final int rssFeedTitleTextView=0x7f050002;
+        public static final int contentLayout=0x7f050004;
+        public static final int deleteButton=0x7f050001;
+        public static final int deleteButtonLayout=0x7f050000;
+        public static final int deleteIndicatorImageView=0x7f050002;
+        public static final int rateButtonsLayout=0x7f050007;
+        public static final int rssCategoryListButton=0x7f05000a;
+        public static final int rssCategoryTextView=0x7f050006;
+        public static final int rssFeedListButton=0x7f050009;
+        public static final int rssFeedListView=0x7f050008;
+        public static final int rssFeedThumbnailImageView=0x7f050003;
+        public static final int rssFeedTitleTextView=0x7f050005;
     }
     public static final class layout {
         public static final int rss_feed_item=0x7f030000;

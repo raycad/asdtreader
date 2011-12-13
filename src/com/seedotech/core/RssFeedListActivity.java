@@ -30,7 +30,7 @@ public class RssFeedListActivity extends Activity {
     	// Test
 	    m_filterRssFeedModel = new RssFeedModel();
 	    for (int i = 0; i < 10; i++) {
-	    	String text = String.format("Title gghk SIGN sign-%d", i+1);
+	    	String text = String.format("Title gghk SIGN sign sdfds fds fsdf sdfds ff fdg fdg fdgdf gfd-%d", i+1);
 	    	RssFeedPK rssFeedPK = new RssFeedPK(text);
 	    	RssFeed rssFeed = new RssFeed(rssFeedPK);
 	    	rssFeed.setTitle(text);
