@@ -7,6 +7,7 @@ import com.seedotech.models.RssFeedModel;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +48,8 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 	}
 
 	public static class ViewHolder {
-		ImageView 	m_rssFeedImageView;
-		TextView	m_rssFeedTitleTextView;
-		TextView	m_rssCategoryTextView;
+		ImageView		m_rssFeedImageView;
+		RssFeedItem 	m_rssFeedItem;
 	}
 
 	@Override
@@ -57,24 +57,41 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 		ViewHolder holder;
 		try {
 			if(convertView == null) {
-				holder 		= new ViewHolder();
 				convertView = new RssFeedItem(m_activity, null);
-				//convertView = m_inflater.inflate(R.layout.vote_result_item, null);
-
-				holder.m_rssFeedImageView 			= (ImageView) 	convertView.findViewById(R.id.thumbnailImageView);
-				holder.m_rssFeedTitleTextView 		= (TextView) 	convertView.findViewById(R.id.rssFeedTitleTextView);
-				holder.m_rssCategoryTextView 		= (TextView) 	convertView.findViewById(R.id.rssCategoryTextView);
-
+				holder = new ViewHolder();
+				holder.m_rssFeedItem 		= (RssFeedItem) convertView;
+				holder.m_rssFeedImageView 	= (ImageView) 	convertView.findViewById(R.id.rssFeedThumbnailImageView);
+				
+				if (m_rssFeedModel != null) {
+					// Get the current RSS feed
+					RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
+					if (rssFeed != null && convertView != null) {
+						holder.m_rssFeedItem.setRssFeed(rssFeed);
+					}
+				}
+				
 				convertView.setTag(holder);
 			} else
 				holder = (ViewHolder)convertView.getTag();
 
-			// Get the current RSS feed
-			RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
-			if (rssFeed != null) {
-				holder.m_rssFeedTitleTextView.setText(rssFeed.getTitle());
-				holder.m_rssCategoryTextView.setText(rssFeed.getRssCategory().getTitle());
-			}
+			// Set background color
+			if (position%2 == 0)
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 240, 240, 240));
+			else 
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 176, 176, 176));
+			
+			int imageId;
+			if (position%3 == 0) 
+				imageId = R.drawable.rss_yellow;
+			else if (position%3 == 1)
+				imageId = R.drawable.rss_green;
+			else 
+				imageId = R.drawable.rss_blue;
+			
+			holder.m_rssFeedImageView.setImageDrawable(m_activity.getResources().getDrawable(imageId));
+			
+			// Update view
+			holder.m_rssFeedItem.updateView();			
 		} catch (Exception e) {
 			// Show errors
 			String text = e.toString();

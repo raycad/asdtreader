@@ -46,17 +46,18 @@ public final class R {
         public static final int star_blue24=0x7f020020;
         public static final int star_gold16=0x7f020021;
         public static final int star_gold24=0x7f020022;
-        public static final int star_gold48=0x7f020023;
-        public static final int star_green16=0x7f020024;
-        public static final int star_purple16=0x7f020025;
-        public static final int star_red16=0x7f020026;
-        public static final int star_white16=0x7f020027;
-        public static final int star_white24=0x7f020028;
-        public static final int star_white32=0x7f020029;
-        public static final int star_white48=0x7f02002a;
-        public static final int view=0x7f02002b;
-        public static final int view_icon=0x7f02002c;
-        public static final int web_browser_icon=0x7f02002d;
+        public static final int star_gold32=0x7f020023;
+        public static final int star_gold48=0x7f020024;
+        public static final int star_green16=0x7f020025;
+        public static final int star_purple16=0x7f020026;
+        public static final int star_red16=0x7f020027;
+        public static final int star_white16=0x7f020028;
+        public static final int star_white24=0x7f020029;
+        public static final int star_white32=0x7f02002a;
+        public static final int star_white48=0x7f02002b;
+        public static final int view=0x7f02002c;
+        public static final int view_icon=0x7f02002d;
+        public static final int web_browser_icon=0x7f02002e;
     }
     public static final class id {
         public static final int contentLayout=0x7f050001;
@@ -65,8 +66,8 @@ public final class R {
         public static final int rssCategoryTextView=0x7f050003;
         public static final int rssFeedListButton=0x7f050006;
         public static final int rssFeedListView=0x7f050005;
+        public static final int rssFeedThumbnailImageView=0x7f050000;
         public static final int rssFeedTitleTextView=0x7f050002;
-        public static final int thumbnailImageView=0x7f050000;
     }
     public static final class layout {
         public static final int rss_feed_item=0x7f030000;

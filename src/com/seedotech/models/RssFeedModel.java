@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.seedotech.models.RssFeed.RssFeedPK;
 
 public class RssFeedModel {
-	ArrayList<RssFeed>	m_rssFeedList = new ArrayList<RssFeed>();
+	private ArrayList<RssFeed>	m_rssFeedList = new ArrayList<RssFeed>();
 	
 	public boolean addRssFeed(final RssFeed rssFeed) {
 		if (getRssFeedByPK(rssFeed.getRssFeedPK()) != null)
