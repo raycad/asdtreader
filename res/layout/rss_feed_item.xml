@@ -34,11 +34,11 @@
 
         <ImageView
             android:id="@+id/deleteIndicatorImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/cancel" />
+            android:src="@drawable/remove_icon" />
         
         <ImageView
             android:id="@+id/rssFeedThumbnailImageView"

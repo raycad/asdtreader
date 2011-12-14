@@ -31,7 +31,7 @@ public class RssFeedItem extends RelativeLayout {
 	private ImageView				m_deleteIndicatorImageView;
 
 	private RssFeedListViewAdapter	m_rssFeedListViewAdapter;
-	private int						m_position;
+	private int						m_row;
 
 	public RssFeedItem(Context context, AttributeSet attrs)
 	{
@@ -48,8 +48,8 @@ public class RssFeedItem extends RelativeLayout {
 		m_rssFeedListViewAdapter = rssFeedListViewAdapter;
 	}
 
-	public void setPosition(int pos) {
-		m_position = pos;
+	public void setRow(int row) {
+		m_row = row;
 	}
 
 	private boolean initialize() {
@@ -57,29 +57,33 @@ public class RssFeedItem extends RelativeLayout {
 		m_rssCategoryTextView 		= (TextView) 	findViewById(R.id.rssCategoryTextView);
 
 		m_deleteButton		 		= (Button) 		findViewById(R.id.deleteButton);
+		m_deleteButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (m_rssFeedListViewAdapter == null)
+					return;
+				
+				m_rssFeedListViewAdapter.deleteItemAtRow(m_row);
+			}
+		});
 
 		m_deleteIndicatorImageView	= (ImageView) 	findViewById(R.id.deleteIndicatorImageView);
 		m_deleteIndicatorImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				int visible = m_deleteButton.getVisibility();
-				boolean show = true;
-				if (visible == View.VISIBLE)
-					show = false;
-				showDeleteButton(show);
+				if (m_rssFeedListViewAdapter == null)
+					return;
+				
+				m_rssFeedListViewAdapter.getListViewUtil().updateData(m_deleteIndicatorImageView, 
+						m_deleteButton, m_row);
+				m_rssFeedListViewAdapter.getListViewUtil().onDeleteIndicatorClicked();
 			}
 		});
 
 		this.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				// Hide the shown delete button
-				if ((m_rssFeedListViewAdapter != null) && 
-						(m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShown != null)) {
-					m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShown.setVisibility(View.GONE);
-					m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShown = null;
-					m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShownAtPos = -1;
-				}
+				m_rssFeedListViewAdapter.getListViewUtil().onRowClicked();
 			}
 		});
 
@@ -107,7 +111,8 @@ public class RssFeedItem extends RelativeLayout {
 		m_currentRateValue = 0;
 		setRateValue(m_currentRateValue);
 
-		showDeleteButton(false);
+		// Hide the delete button
+		m_deleteButton.setVisibility(View.GONE);
 
 		return true;
 	}
@@ -155,28 +160,27 @@ public class RssFeedItem extends RelativeLayout {
 			m_rssFeedTitleTextView.setText(m_rssFeed.getTitle());
 			setRateValue(m_rssFeed.getRate());
 		}
-
+		
+		// Check update the current row
 		if ((m_rssFeedListViewAdapter != null) &&
-				(m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShownAtPos == m_position))
+				(m_rssFeedListViewAdapter.getListViewUtil().getCurrentRow() == m_row)) {
+			// Update current data since the view data has been changed
+			m_rssFeedListViewAdapter.getListViewUtil().updateData(m_deleteIndicatorImageView,
+					m_deleteButton, m_row);
+			
 			showDeleteButton(true);
-		else
+		} else
 			showDeleteButton(false);
 	}
-
+	
 	public void showDeleteButton(final boolean show) {
+		if (m_deleteButton == null)
+			return;
+		
 		if (show == true) {
 			m_deleteButton.setVisibility(View.VISIBLE);
-			if (m_rssFeedListViewAdapter != null) {
-				m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShownAtPos = m_position;
-				m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShown = m_deleteButton;
-			}
 		} else {
 			m_deleteButton.setVisibility(View.GONE);
-			if ((m_rssFeedListViewAdapter != null) &&
-					(m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShownAtPos == m_position)) {
-				m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShownAtPos = -1;
-				m_rssFeedListViewAdapter.m_rssFeedListViewHolder.m_deleteButtonShown = null;
-			}
 		}
 	}
 }

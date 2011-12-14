@@ -23,7 +23,7 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 	private LayoutInflater 	m_inflater;
 	private	RssFeedModel 	m_rssFeedModel;
 
-	public RssFeedListViewHolder	m_rssFeedListViewHolder = new RssFeedListViewHolder();
+	private ListViewUtil	m_listViewUtil = new ListViewUtil();
 	
 	public RssFeedListViewAdapter(Activity activity, final RssFeedModel rssFeedModel) {
 		super();
@@ -34,6 +34,10 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 		this.m_inflater 	= (LayoutInflater) m_activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
+	public ListViewUtil getListViewUtil() {
+		return m_listViewUtil;
+	}
+	
 	@Override
 	public int getCount() {
 		return m_rssFeedModel.count();
@@ -73,7 +77,7 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 				RssFeed rssFeed = m_rssFeedModel.getRssFeedAtIndex(position);
 				if (rssFeed != null && convertView != null) {
 					holder.m_rssFeedItem.setRssFeed(rssFeed);
-					holder.m_rssFeedItem.setPosition(position);
+					holder.m_rssFeedItem.setRow(position);
 					holder.m_rssFeedItem.setRssFeedListViewAdapter(this);
 				}
 			}
@@ -105,5 +109,14 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 		}
 
 		return convertView;
+	}
+	
+	public void deleteItemAtRow(final int rowIndex) {
+		m_rssFeedModel.removeRssFeedByIndex(rowIndex);
+		// Reset the util
+		m_listViewUtil.setDefaultData();
+		
+		// Notify data has been changed
+		this.notifyDataSetChanged();
 	}
 }
