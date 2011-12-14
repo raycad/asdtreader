@@ -23,12 +23,13 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 	private LayoutInflater 	m_inflater;
 	private	RssFeedModel 	m_rssFeedModel;
 
-	private ListViewUtil	m_listViewUtil = new ListViewUtil();
+	private ListViewUtil	m_listViewUtil = null;
 	
 	public RssFeedListViewAdapter(Activity activity, final RssFeedModel rssFeedModel) {
 		super();
 
 		this.m_activity 	= activity;
+		m_listViewUtil 		= new ListViewUtil(activity);
 		this.m_rssFeedModel	= rssFeedModel;
 
 		this.m_inflater 	= (LayoutInflater) m_activity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

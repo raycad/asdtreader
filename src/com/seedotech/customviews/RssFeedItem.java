@@ -6,6 +6,7 @@ import com.seedotech.R;
 import com.seedotech.models.RssFeed;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -168,15 +169,18 @@ public class RssFeedItem extends RelativeLayout {
 			m_rssFeedListViewAdapter.getListViewUtil().updateData(m_deleteIndicatorImageView,
 					m_deleteButton, m_row);
 			
+			// Set indicator
+			m_rssFeedListViewAdapter.getListViewUtil().setDefaultDeleteIndicator(m_deleteIndicatorImageView);
+			m_rssFeedListViewAdapter.getListViewUtil().startRotationAnimation(m_deleteIndicatorImageView, true);
+			
 			showDeleteButton(true);
-		} else
+		} else {
+			m_rssFeedListViewAdapter.getListViewUtil().setDefaultDeleteIndicator(m_deleteIndicatorImageView);
 			showDeleteButton(false);
+		}
 	}
 	
 	public void showDeleteButton(final boolean show) {
-		if (m_deleteButton == null)
-			return;
-		
 		if (show == true) {
 			m_deleteButton.setVisibility(View.VISIBLE);
 		} else {
