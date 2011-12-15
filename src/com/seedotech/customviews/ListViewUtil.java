@@ -120,6 +120,9 @@ public class ListViewUtil {
 	public void setDefaultDeleteIndicator(final ImageView imageView) {
 		if (imageView == null)
 			return;
+		// Clear animation
+		imageView.clearAnimation();
+		
 		imageView.setImageDrawable(m_defaultDeleteIndicatorDrawable);
 	}
 	
