@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
 
-    <ListView 
+    <com.seedotech.customviews.TabBarLayout
+        android:id="@+id/tabBarLayout"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="40dp" >
+        </com.seedotech.customviews.TabBarLayout>
+    
+    <ListView
         android:id="@+id/rssFeedListView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_above="@id/tabBarLayout" >
     </ListView>
-
 </RelativeLayout>
