@@ -22,16 +22,9 @@ import com.seedotech.common.Global;
 import com.seedotech.common.StringKey;
 import com.seedotech.controllers.SdtController;
 import com.seedotech.customviews.SdtView;
-import com.seedotech.customviews.TabBarButton.ButtonState;
 
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.LightingColorFilter;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +63,7 @@ public class TabBarLayout extends RelativeLayout implements SdtView
 	    updateView();
 	    
 	    // Set RSS Feed be selected
-	    m_rssFeedListButton.setButtonState(ButtonState.Selected);
+	    m_rssFeedListButton.setButtonState(CustomButton.ButtonState.Selected);
 	    
         return true;
 	}
@@ -122,9 +115,9 @@ public class TabBarLayout extends RelativeLayout implements SdtView
 		for (int i = 0; i < m_tabBarButtonList.size(); i++) {
 			TabBarButton tbb = m_tabBarButtonList.get(i);
 			if (button == tbb) 
-				tbb.setButtonState(ButtonState.Selected);
+				tbb.setButtonState(CustomButton.ButtonState.Selected);
 			else 
-				tbb.setButtonState(ButtonState.Normal);
+				tbb.setButtonState(CustomButton.ButtonState.Normal);
 		}
 	}
 }
