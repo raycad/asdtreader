@@ -85,9 +85,9 @@ public class RssFeedListViewAdapter extends BaseAdapter {
 			
 			// Set background color
 			if (position%2 == 0)
-				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 250, 255, 240));
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 255, 255, 255));
 			else 
-				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 200, 200, 200));
+				holder.m_rssFeedItem.setBackgroundColor(Color.argb(255, 203, 200, 203));
 			
 			int imageId;
 			if (position%3 == 0) 

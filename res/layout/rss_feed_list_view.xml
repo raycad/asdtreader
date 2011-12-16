@@ -8,7 +8,9 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:background="#C66E15"
+        android:background="@color/title_color"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:orientation="horizontal" >
 
         <com.seedotech.customviews.BlackGradientButton
@@ -16,20 +18,28 @@
             style="@style/tab_bar_button_text"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:gravity="center"
             android:layout_margin="1dp"
+            android:gravity="center"
             android:text="New" >
         </com.seedotech.customviews.BlackGradientButton>
-        
-            <com.seedotech.customviews.GrayGradientButton
+
+        <com.seedotech.customviews.GrayGradientButton
             android:id="@+id/newRssFeedButton"
             style="@style/tab_bar_button_text"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:gravity="center"
             android:layout_margin="1dp"
+            android:gravity="center"
             android:text="New" >
         </com.seedotech.customviews.GrayGradientButton>
+
+        <com.seedotech.customviews.CustomImageButton
+            android:id="@+id/modeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="1dp"
+            android:gravity="center" >
+        </com.seedotech.customviews.CustomImageButton>
     </LinearLayout>
 
     <com.seedotech.customviews.TabBarLayout
@@ -39,13 +49,29 @@
         android:layout_alignParentBottom="true" >
     </com.seedotech.customviews.TabBarLayout>
 
-    <ListView
-        android:id="@+id/rssFeedListView"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@id/tabBarLayout"
-        android:layout_below="@id/titleBarLayout" 
-        android:background="#535252" >
-    </ListView>
+        android:layout_below="@id/titleBarLayout"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <ListView
+            android:id="@+id/rssFeedListView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#535252" >
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#000000" />
+    </LinearLayout>
 
 </RelativeLayout>
