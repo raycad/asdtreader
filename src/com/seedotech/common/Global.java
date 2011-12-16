@@ -28,4 +28,8 @@ public class Global {
 	
 	// Define Intent Return Codes
 	public static final String 	IRC_EXCEPTION	 							= "IRC_EXCEPTION";
+	
+	// Define View IDs
+	public static final int		RSS_FEED_LIST_VIEW_ID		= 0;
+	public static final int		RSS_CATEGORY_LIST_VIEW_ID	= 1;
 }

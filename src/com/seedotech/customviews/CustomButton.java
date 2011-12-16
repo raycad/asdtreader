@@ -34,4 +34,22 @@ public class CustomButton extends Button {
 				this.setBackgroundDrawable(m_normalDrawable);
 		}
 	}
+	
+	/**
+	 * @param normalBkgId: The resource id
+	 * For example: R.drawable.gray_gradient_image_button
+	 */
+	public void setNormalBackgroundId(final int normalBkgId) {
+		Drawable d = this.getResources().getDrawable(normalBkgId);
+		m_normalDrawable = d;
+	}
+	
+	/**
+	 * @param selectedBkgId: The resource id
+	 * For example: R.drawable.gray_gradient_image_button
+	 */
+	public void setSelectedBackgroundId(final int selectedBkgId) {
+		Drawable d = this.getResources().getDrawable(selectedBkgId);
+		m_selectedDrawable = d;
+	}
 }

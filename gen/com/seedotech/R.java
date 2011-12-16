@@ -100,13 +100,12 @@ public final class R {
         public static final int modeButton=0x7f08000d;
         public static final int newRssFeedButton=0x7f08000c;
         public static final int rateButtonsLayout=0x7f08000a;
-        public static final int rssCategoryListButton=0x7f080011;
         public static final int rssCategoryTextView=0x7f080009;
-        public static final int rssFeedListButton=0x7f080010;
         public static final int rssFeedListView=0x7f08000f;
         public static final int rssFeedThumbnailImageView=0x7f080006;
         public static final int rssFeedTitleTextView=0x7f080008;
-        public static final int tabBarLayout=0x7f08000e;
+        public static final int tabBarItem=0x7f08000e;
+        public static final int tabBarItemLayout=0x7f080010;
         public static final int textView=0x7f080002;
         public static final int titleBarLayout=0x7f08000b;
     }

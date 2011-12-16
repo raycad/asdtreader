@@ -11,12 +11,13 @@ public class TabBarButton extends CustomButton {
 	public TabBarButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
-		m_selectedDrawable 	= context.getResources().getDrawable(R.drawable.green_button);
+		m_selectedDrawable 	= context.getResources().getDrawable(R.drawable.yellow_button);
 		m_normalDrawable 	= context.getResources().getDrawable(R.drawable.black_button);
 		
 		setButtonState(ButtonState.Normal);
 	}
 	
+	@Override
 	public void setButtonState(final ButtonState state) {
 		if (m_buttonState == state)
 			return;
