@@ -31,12 +31,14 @@ public class TabBarItem extends LinearLayout
 {
 	private Callback				m_callback 				= null;
 	
+	private CustomButton			m_currentSelectButton	= null;
+	
 	private Map<Integer, CustomButton> m_tabBarButtonMap	= new HashMap<Integer, CustomButton>();
 	
 	protected LinearLayout	m_tabBarItemLayout				= null;
 	
 	public interface Callback {
-		public void onClicked(int tabBarButtonId);
+		public void onClicked(final CustomButton buttonClicked);
 	}
 	
 	public void setCallback(final Callback callback) {
@@ -71,13 +73,21 @@ public class TabBarItem extends LinearLayout
 	        params.gravity	= Gravity.CENTER;	        
 	        // update weight
 	        params.weight 	= weight;
-	        params.setMargins(1, 2, 1, 2);
+	        params.setMargins(1, 1, 1, 1);
 	        tbb.setLayoutParams(params);	        
 	    }
 	}
 	
-	protected void onButtonClicked(final CustomButton button) {
-		setSelectedButton(button);
+	protected void onButtonClicked(final CustomButton buttonClicked) {
+		if (m_currentSelectButton == buttonClicked)
+			return;
+		
+		// Update the current selected button
+		m_currentSelectButton = buttonClicked;
+		
+		setSelectedButton(buttonClicked);
+		if (m_callback != null)
+			m_callback.onClicked(buttonClicked);
 	}
 	
 	public void addTabBarButton( final Integer key, final CustomButton button) {
@@ -109,6 +119,9 @@ public class TabBarItem extends LinearLayout
 	}
 	
 	public void setSelectedButton(final CustomButton button) {
+		// Update the current selected button
+		m_currentSelectButton = button;
+		
 		Iterator it = m_tabBarButtonMap.entrySet().iterator();
 	    while (it.hasNext()) {
 	        Map.Entry pairs = (Map.Entry) it.next();
@@ -126,11 +139,39 @@ public class TabBarItem extends LinearLayout
 	        Map.Entry pairs = (Map.Entry) it.next();
 	        Integer id = (Integer) pairs.getKey();
 	        CustomButton tbb = (CustomButton) pairs.getValue();
-	        if (buttonId == id.intValue()) 
+	        if (buttonId == id.intValue()) {
+	        	// Update the current selected button
+	    		m_currentSelectButton = tbb;
 				tbb.setButtonState(CustomButton.ButtonState.Selected);
-			else 
+	        } else 
 				tbb.setButtonState(CustomButton.ButtonState.Normal);
 	    }
+	}
+	
+	public CustomButton getButtonByKey(final int buttonId) {
+		Iterator it = m_tabBarButtonMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pairs = (Map.Entry) it.next();
+	        Integer id = (Integer) pairs.getKey();
+	        CustomButton tbb = (CustomButton) pairs.getValue();
+	        if (buttonId == id.intValue()) 
+				return tbb;
+	    }
+	    
+	    return null;
+	}
+	
+	public int getButtonKeyFromButton(final CustomButton button) {
+		Iterator it = m_tabBarButtonMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pairs = (Map.Entry) it.next();
+	        Integer id = (Integer) pairs.getKey();
+	        CustomButton tbb = (CustomButton) pairs.getValue();
+	        if (button == tbb) 
+				return id;
+	    }
+	    
+	    return -1;
 	}
 }
 

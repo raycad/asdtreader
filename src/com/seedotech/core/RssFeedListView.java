@@ -57,9 +57,11 @@ public class RssFeedListView implements SdtView {
     	
     	m_tabBarItem = (TabBarItem) m_rssFeedListActivity.findViewById(R.id.tabBarItem);
     	m_tabBarItem.setCallback(new TabBarItem.Callback() {
+			
 			@Override
-			public void onClicked(int tabBarButtonId) {
-				String text = String.format("buttonId = %d", tabBarButtonId);
+			public void onClicked(CustomButton buttonClicked) {
+				String text = String.format("Button %s; Id = %d", buttonClicked.getText(),
+						m_tabBarItem.getButtonKeyFromButton(buttonClicked));
 				Context context = m_rssFeedListActivity.getApplicationContext();
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
