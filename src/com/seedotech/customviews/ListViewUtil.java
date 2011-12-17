@@ -10,6 +10,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.seedotech.R;
+import com.seedotech.utils.SdtAnimationUtils;
 
 public class ListViewUtil {
 	// Current data
@@ -98,9 +99,11 @@ public class ListViewUtil {
 			return;
 
 		if (show == true) {
+			SdtAnimationUtils.setViewAnimationSlideFromRightToLeft(m_currentDeleteButton, m_currentDeleteButton.getContext());
 			m_currentDeleteButton.setVisibility(View.VISIBLE);
 		} else {
-			m_currentDeleteButton.setVisibility(View.GONE);
+			SdtAnimationUtils.setViewAnimationSlideFromLeftToRight(m_currentDeleteButton, m_currentDeleteButton.getContext());
+			//m_currentDeleteButton.setVisibility(View.GONE);
 			// Reset data
 			setDefaultData();
 		}
@@ -111,9 +114,11 @@ public class ListViewUtil {
 			return;
 
 		if (show == true) {
+			SdtAnimationUtils.setViewAnimationSlideFromRightToLeft(m_lastDeleteButton, m_lastDeleteButton.getContext());
 			m_lastDeleteButton.setVisibility(View.VISIBLE);
 		} else {
-			m_lastDeleteButton.setVisibility(View.GONE);
+			SdtAnimationUtils.setViewAnimationSlideFromLeftToRight(m_lastDeleteButton, m_lastDeleteButton.getContext());
+			//m_lastDeleteButton.setVisibility(View.GONE);
 		}
 	}
 
@@ -130,26 +135,6 @@ public class ListViewUtil {
 		if (imageView == null)
 			return;
 
-		Animation rotation = null;
-		if (clockwise)
-			rotation = AnimationUtils.loadAnimation(m_currentDeleteIndicatorImageView.getContext(),
-					R.anim.clockwise_rotation);
-		else
-			rotation = AnimationUtils.loadAnimation(m_currentDeleteIndicatorImageView.getContext(),
-					R.anim.counter_clockwise_rotation);
-
-		imageView.startAnimation(rotation);
-
-		//rotation.setRepeatCount(Animation.INFINITE);
-
-		// Create an animation instance
-		/*Animation rotation = new RotateAnimation(0f, -90f, 0f, 0f);
-	    rotation.setStartOffset(0);
-	    rotation.setDuration(500);
-		rotation.setRepeatCount(0);                	// -1 = infinite repeated
-		rotation.setRepeatMode(Animation.REVERSE); 	// reverses each repeat
-		rotation.setFillAfter(true);				// keep rotation after animation
-		rotation.setInterpolator(new LinearInterpolator());
-		m_currentDeleteIndicatorImageView.startAnimation(rotation);*/
+		SdtAnimationUtils.startRotationAnimation(imageView, imageView.getContext(), clockwise);
 	}
 }

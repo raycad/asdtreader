@@ -11,6 +11,8 @@ public final class R {
     public static final class anim {
         public static final int clockwise_rotation=0x7f040000;
         public static final int counter_clockwise_rotation=0x7f040001;
+        public static final int slide_left_to_right=0x7f040002;
+        public static final int slide_right_to_left=0x7f040003;
     }
     public static final class attr {
     }
@@ -114,6 +116,7 @@ public final class R {
         public static final int rss_feed_item=0x7f030001;
         public static final int rss_feed_list_view=0x7f030002;
         public static final int tab_bar_layout_item=0x7f030003;
+        public static final int test=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f060001;

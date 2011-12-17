@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import com.seedotech.R;
 import com.seedotech.models.RssFeed;
+import com.seedotech.utils.SdtAnimationUtils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,7 +66,7 @@ public class RssFeedItem extends RelativeLayout {
 			public void onClick(View view) {
 				if (m_rssFeedListViewAdapter == null)
 					return;
-				
+
 				m_rssFeedListViewAdapter.deleteItemAtRow(m_row);
 			}
 		});
@@ -74,7 +77,7 @@ public class RssFeedItem extends RelativeLayout {
 			public void onClick(View view) {
 				if (m_rssFeedListViewAdapter == null)
 					return;
-				
+
 				m_rssFeedListViewAdapter.getListViewUtil().updateData(m_deleteIndicatorImageView, 
 						m_deleteButton, m_row);
 				m_rssFeedListViewAdapter.getListViewUtil().onDeleteIndicatorClicked();
@@ -161,29 +164,32 @@ public class RssFeedItem extends RelativeLayout {
 			m_rssFeedTitleTextView.setText(m_rssFeed.getTitle());
 			setRateValue(m_rssFeed.getRate());
 		}
-		
+
 		// Check update the current row
 		if ((m_rssFeedListViewAdapter != null) &&
 				(m_rssFeedListViewAdapter.getListViewUtil().getCurrentRow() == m_row)) {
 			// Update current data since the view data has been changed
 			m_rssFeedListViewAdapter.getListViewUtil().updateData(m_deleteIndicatorImageView,
 					m_deleteButton, m_row);
-			
+
 			// Set indicator
 			m_rssFeedListViewAdapter.getListViewUtil().setDefaultDeleteIndicator(m_deleteIndicatorImageView);
 			m_rssFeedListViewAdapter.getListViewUtil().startRotationAnimation(m_deleteIndicatorImageView, true);
-			
+
 			showDeleteButton(true);
 		} else {
 			m_rssFeedListViewAdapter.getListViewUtil().setDefaultDeleteIndicator(m_deleteIndicatorImageView);
 			showDeleteButton(false);
 		}
 	}
-	
+
 	public void showDeleteButton(final boolean show) {
+		Animation anim = null;
 		if (show == true) {
+			SdtAnimationUtils.setViewAnimationSlideFromRightToLeft(m_deleteButton, m_deleteButton.getContext());
 			m_deleteButton.setVisibility(View.VISIBLE);
 		} else {
+			//SdtAnimationUtils.setViewAnimationSlideFromLeftToRight(m_deleteButton, m_deleteButton.getContext());
 			m_deleteButton.setVisibility(View.GONE);
 		}
 	}
