@@ -68,23 +68,31 @@ public class ListViewUtil {
 
 			showCurrentDeleteButton(show);
 		} else {		
-			setDefaultDeleteIndicator(m_lastDeleteIndicatorImageView);
-			// Hide the last delete button
-			showLastDeleteButton(false);
+			if (m_lastDeleteIndicatorImageView != null) {
+				setDefaultDeleteIndicator(m_lastDeleteIndicatorImageView);
+				startRotationAnimation(m_lastDeleteIndicatorImageView, false);
+				
+				// Hide the last delete button
+				showLastDeleteButton(false);
+			}
 
-			startRotationAnimation(m_currentDeleteIndicatorImageView, true);
-			// Show the current delete button
-			showCurrentDeleteButton(true);
+			if (m_currentDeleteIndicatorImageView != null) {
+				startRotationAnimation(m_currentDeleteIndicatorImageView, true);
+				// Show the current delete button
+				showCurrentDeleteButton(true);
+			}
 		}
 	}
 
 	public void onRowClicked() {
-		// Hide the shown delete button
-		if (m_currentDeleteButton != null)
-			m_currentDeleteButton.setVisibility(View.GONE);
+		if (m_currentDeleteIndicatorImageView != null) {
+			setDefaultDeleteIndicator(m_currentDeleteIndicatorImageView);
+			startRotationAnimation(m_currentDeleteIndicatorImageView, false);
+		}
 
-		setDefaultDeleteIndicator(m_currentDeleteIndicatorImageView);
-		
+		// Hide the shown delete button
+		showCurrentDeleteButton(false);
+
 		setDefaultData();
 	}
 
@@ -127,10 +135,10 @@ public class ListViewUtil {
 			return;
 		// Clear animation
 		imageView.clearAnimation();
-		
+
 		imageView.setImageDrawable(m_defaultDeleteIndicatorDrawable);
 	}
-	
+
 	public void startRotationAnimation(final ImageView imageView, boolean clockwise) {
 		if (imageView == null)
 			return;
