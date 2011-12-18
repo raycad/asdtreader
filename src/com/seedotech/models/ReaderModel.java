@@ -18,6 +18,7 @@ public class ReaderModel {
 
 	private static final ReaderModel 	m_instance 				= new ReaderModel();
 	private RssFeedModel				m_rssFeedModel			= null;
+	private RssCategoryModel			m_rssCategoryModel		= null;
 	private Context						m_context 				= null;
 	private SQLiteDatabase 				m_readerDatabase		= null;
 
@@ -34,6 +35,10 @@ public class ReaderModel {
 
 	public RssFeedModel getRssFeedModel() {
 		return m_rssFeedModel;
+	}
+	
+	public RssCategoryModel getRssCategoryModel() {
+		return m_rssCategoryModel;
 	}
 	
 	public void initialize(final Context contex) {
@@ -53,7 +58,11 @@ public class ReaderModel {
 				throw sqle;
 			}
 
-			// Get data
+			// Get all rss categories data
+			RssCategoryDAO rssCategoryDAO = new RssCategoryDAO();
+			m_rssCategoryModel = rssCategoryDAO.getAllRssCategories();
+			
+			// Get all rss feeds data
 			RssFeedDAO rssFeedDAO = new RssFeedDAO();
 			m_rssFeedModel = rssFeedDAO.getAllRssFeeds();
 		} catch (Exception e) {

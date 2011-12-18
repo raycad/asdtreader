@@ -3,6 +3,7 @@ package com.seedotech.customviews;
 import java.util.ArrayList;
 
 import com.seedotech.R;
+import com.seedotech.models.RssCategory;
 import com.seedotech.models.RssFeed;
 import com.seedotech.utils.SdtAnimationUtils;
 
@@ -163,8 +164,13 @@ public class RssFeedItem extends RelativeLayout {
 		if (m_rssFeed != null) {
 			m_rssFeedTitleTextView.setText(m_rssFeed.getTitle());
 			setRateValue(m_rssFeed.getRate());
-		}
 
+			RssCategory rssCategory = m_rssFeed.getRssCategory();
+			if (rssCategory != null) {
+				m_rssCategoryTextView.setText(rssCategory.getTitle());
+			}
+		}
+		
 		// Check update the current row
 		if ((m_rssFeedListViewAdapter != null) &&
 				(m_rssFeedListViewAdapter.getListViewUtil().getCurrentRow() == m_row)) {

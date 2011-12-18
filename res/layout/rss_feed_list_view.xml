@@ -8,11 +8,12 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:background="@color/title_color"
-        android:paddingTop="2dp"
+        android:background="@color/title_button_color"
+        android:orientation="horizontal"
         android:paddingBottom="2dp"
-        android:orientation="horizontal" >
+        android:paddingTop="2dp" >
 
+        <!--
         <com.seedotech.customviews.BlackGradientButton
             android:id="@+id/newRssFeedButton"
             style="@style/tab_bar_button_text"
@@ -32,14 +33,41 @@
             android:gravity="center"
             android:text="New" >
         </com.seedotech.customviews.GrayGradientButton>
+        -->
 
-        <com.seedotech.customviews.CustomImageButton
-            android:id="@+id/modeButton"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="1dp"
-            android:gravity="center" >
-        </com.seedotech.customviews.CustomImageButton>
+            android:layout_gravity="center" >
+
+            <com.seedotech.customviews.CustomImageButton
+                android:id="@+id/newButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="1dp"
+                android:gravity="center" >
+            </com.seedotech.customviews.CustomImageButton>
+
+            <com.seedotech.customviews.CustomImageButton
+                android:id="@+id/modeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_margin="1dp"
+                android:layout_toLeftOf="@+id/searchButton"
+                android:layout_toRightOf="@id/newButton"
+                android:gravity="center" >
+            </com.seedotech.customviews.CustomImageButton>
+
+            <com.seedotech.customviews.CustomImageButton
+                android:id="@+id/searchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_margin="1dp"
+                android:gravity="center" >
+            </com.seedotech.customviews.CustomImageButton>
+        </RelativeLayout>
     </LinearLayout>
 
     <com.seedotech.customviews.TabBarItem

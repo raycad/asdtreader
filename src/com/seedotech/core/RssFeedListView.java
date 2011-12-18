@@ -19,7 +19,9 @@ public class RssFeedListView implements SdtView {
 	private ListView					m_rssFeedListView			= null;
 	private RssFeedListViewAdapter		m_rssFeedListViewAdapter	= null;
 	
+	private CustomImageButton			m_newButton					= null;
 	private CustomImageButton			m_modeButton				= null;
+	private CustomImageButton			m_searchButton				= null;
 	
 	private TabBarItem					m_tabBarItem				= null;
 	
@@ -38,20 +40,46 @@ public class RssFeedListView implements SdtView {
     	// set the list's adapter
     	m_rssFeedListView.setAdapter(this.m_rssFeedListViewAdapter);
     	
+    	m_newButton = (CustomImageButton) m_rssFeedListActivity.findViewById(R.id.newButton);
+    	m_newButton.setBackgroundId(R.drawable.gray_image_button);
+    	m_newButton.setImageId(R.drawable.rss_feed_add);
+    	m_newButton.setText("New");
+    	m_newButton.setTextColor(Color.parseColor("#184357"));
+    	m_newButton.setTextStyle(android.graphics.Typeface.BOLD);
+    	
     	m_modeButton = (CustomImageButton) m_rssFeedListActivity.findViewById(R.id.modeButton);
-    	//m_modeButton.setBackgroundId(R.drawable.gray_gradient_image_button);
+    	m_modeButton.setBackgroundId(R.drawable.gray_image_button);
     	m_modeButton.setImageId(R.drawable.view_icon);
-    	m_modeButton.setText("Raycad");
-    	m_modeButton.setTextColor(Color.BLUE);
+    	m_modeButton.setText("View Mode");
+    	m_modeButton.setTextColor(Color.parseColor("#184357"));
+    	m_modeButton.setTextStyle(android.graphics.Typeface.BOLD);
     	
     	m_modeButton.setCallback(new CustomImageButton.Callback() {
 			@Override
 			public void onClicked() {
-				String text = String.format("%s button was clicked!", m_modeButton.getText());
+				/*String text = String.format("%s button was clicked!", m_modeButton.getText());
 				Context context = m_rssFeedListActivity.getApplicationContext();
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				toast.show();*/
+			}
+		});
+    	
+    	m_searchButton = (CustomImageButton) m_rssFeedListActivity.findViewById(R.id.searchButton);
+    	m_searchButton.setBackgroundId(R.drawable.gray_image_button);
+    	m_searchButton.setImageId(R.drawable.search);
+    	m_searchButton.setText("By Title");
+    	m_searchButton.setTextColor(Color.parseColor("#184357"));
+    	m_searchButton.setTextStyle(android.graphics.Typeface.BOLD);
+    	
+    	m_searchButton.setCallback(new CustomImageButton.Callback() {
+			@Override
+			public void onClicked() {
+				/*String text = String.format("%s button was clicked!", m_searchButton.getText());
+				Context context = m_rssFeedListActivity.getApplicationContext();
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();*/
 			}
 		});
     	

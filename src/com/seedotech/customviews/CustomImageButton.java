@@ -4,6 +4,8 @@ import com.seedotech.R;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.style.StyleSpan;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -96,7 +98,7 @@ public class CustomImageButton extends LinearLayout
 	}
 	
 	public void setText(final String text) {
-		m_textView.setText(text);
+		m_textView.setText(text, TextView.BufferType.SPANNABLE);
 	}
 	
 	public String getText() {
@@ -105,5 +107,14 @@ public class CustomImageButton extends LinearLayout
 	
 	public void setTextColor(final int textColor) {
 		m_textView.setTextColor(textColor);
+	}
+	
+	/**
+	 * @param style: style of the text
+	 * @example: android.graphics.Typeface.BOLD_ITALIC
+	 */
+	public void setTextStyle(final int style) {
+		Spannable spn = (Spannable) m_textView.getText();
+        spn.setSpan(new StyleSpan(style), 0, m_textView.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 	}
 }
