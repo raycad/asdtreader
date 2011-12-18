@@ -2,6 +2,9 @@ package com.seedotech.core;
 
 import com.seedotech.R;
 import com.seedotech.common.Global;
+import com.seedotech.common.LanguageCode;
+import com.seedotech.controllers.SdtController;
+import com.seedotech.models.ReaderModel;
 import com.seedotech.models.RssFeed;
 import com.seedotech.models.RssFeedPK;
 import com.seedotech.models.RssFeedModel;
@@ -27,16 +30,13 @@ public class RssFeedListActivity extends Activity {
     
     public boolean initialize() {
     	// Initialize data model
-    	// Test
-	    m_filterRssFeedModel = new RssFeedModel();
-	    for (int i = 0; i < 10; i++) {
-	    	String text = String.format("Title gghk SIGN sign s-%d", i+1);
-	    	RssFeedPK rssFeedPK = new RssFeedPK(text);
-	    	RssFeed rssFeed = new RssFeed(rssFeedPK);
-	    	rssFeed.setTitle(text);
-	    	rssFeed.setRate(i%3);
-	    	m_filterRssFeedModel.addRssFeed(rssFeed);
-	    }
+    	SdtController sdtController = SdtController.getInstance();
+    	sdtController.getLanguageUtil().setData(getResources().getAssets(), LanguageCode.LC_ENGLISH);
+        
+    	ReaderModel readerModel = ReaderModel.getInstance();
+    	readerModel.initialize(this);
+    	
+	    m_filterRssFeedModel = readerModel.getRssFeedModel();
 	    
 		// Initialize UI
     	m_ui.initUI();

@@ -6,6 +6,8 @@
 
     <uses-sdk android:minSdkVersion="10" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
     <application
         android:icon="@drawable/rss_icon64"
         android:label="@string/app_name" >
